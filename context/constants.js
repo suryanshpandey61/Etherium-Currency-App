@@ -5,13 +5,13 @@ import Web3Modal from "web3modal";
 import tokenICO from "./TokenICO.json";
 import erc20 from "./ERC20.json";
 
-export const TOKEN_ADDRESS = "";
-export const ERC20_ABI = "";
+export const TOKEN_ADDRESS = "0x32e45Eb41845B8900E90FF48f9E8FaEe04755eDd";
+export const ERC20_ABI = erc20.abi;
 
-export const OWNER_ADDRESS = "";
+export const OWNER_ADDRESS = "0x2bD5b9ac15F0ba2F55dD3b44b24C075b741ED2fc";
 
-export const CONTRACT_ADDRESS = "";
-export const CONTRACT_ABI= "";
+export const CONTRACT_ADDRESS = "0x9EEDD73095612abE7506Cb6b21444a085Dc1738d";
+export const CONTRACT_ABI= tokenICO.abi;
 
 // user can intract only your networks 
 
@@ -198,7 +198,7 @@ export const TOKEN_ICO_CONTRACT = async () => {
 
 }
 
-export const ERC20 = async () => {
+export const ERC20 = async (ADDRESS) => {
 
   try{
    const web3Modal = new Web3Modal();
@@ -207,6 +207,8 @@ export const ERC20 = async () => {
 
    const signer = await provider.getSigner();
    const network = await provider.getNetwork();
+
+   const contract = fetchContract(ADDRESS,ERC20_ABI,signer)
    
    const userAddress = signer.getAddress();
    const balance = await contract.balanceOf(userAddress);
