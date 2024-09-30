@@ -52,10 +52,12 @@ const Index = () => {
   const [ownerModel, setOwnerModel] = useState(false);
   const [buyModel, setBuyModel] = useState(false);
   const [transferModel, setTransferModel] = useState(false);
-  const [transferCurrencyModel, setTransferCurrency] = useState(false);
+  
+  const [transferCurrency, setTransferCurrency] = useState(false);
   const [openDonate, setOpenDonate] = useState(false);
   const [openUpdatePrice, setOpenUpdatePrice] = useState(false);
   const [details, setDetails] = useState();
+  const [openUpdateAddress,setOpenUpdateAddress] = useState(false);
 
   // Fetch data when the component mounts
   useEffect(() => {
@@ -65,13 +67,144 @@ const Index = () => {
       setDetails(items);
     };
     fetchData();
-  }, [TOKEN_ICO]); // Include TOKEN_ICO in dependency array if it can change
+  }, [account]); // Include TOKEN_ICO in dependency array if it can change
 
   return (
     <>
       <div className="body-wrap">
-        {ownerModel && <Owner setOwnerModel={setOwnerModel} />}
+
+
+        {ownerModel && (
+        <Owner setOwnerModel={setOwnerModel}
+              currency={currency} 
+              details={details}
+              account={account}
+              setTransferModel={setTransferModel}
+              setTransferCurrency={setTransferCurrency}
+              setOpenDonate={setOpenDonate}
+              TOKEN_WITHDRAW={TOKEN_WITHDRAW}
+              setOpenUpdatePrice={setOpenUpdatePrice}
+              setOpenUpdateAddress={setOpenUpdateAddress}
+        />
+        )}
         {/* Other components can be added here */}
+        {
+          buyModel && (
+            <Popup
+              setBuyModel={setBuyModel}
+              BUY_TOKEN={BUY_TOKEN}
+              currency={currency}
+              details={details}
+              account={account}
+              ERC20={ERC20}
+              TOKEN_ADDRESS={TOKEN_ADDRESS}
+              setLoader={setLoader}
+            />
+          )
+        }
+
+        {
+          transferModel && (
+            <TransferToken
+              setTransferModel={setTransferModel}
+              TRANSFER_TOKEN={TRANSFER_TOKEN}
+              ERC20={ERC20}
+              setLoader={setLoader}
+            />
+          )
+        }
+
+        {
+          transferCurrency && (
+            <TransferCurrency
+              setTransferCurrency={setTransferCurrency}
+              TRANSFER_ETHER={TRANSFER_ETHER}
+              details={details}
+              currency={currency}
+              CHECK_ACCOUNT_BALANCE={CHECK_ACCOUNT_BALANCE}
+              setLoader={setLoader}
+            />
+          ) 
+        }
+
+        {
+          openDonate && (
+            <Donate
+              details={details}
+              currency={currency}
+              setOpenDonate={setOpenDonate}
+              DONATE={DONATE}
+            />
+          )
+        }
+
+        {
+          openUpdatePrice && (
+            <UpdatePrice
+               details={details}
+               currency={currency}
+               setOpenUpdatePrice={setOpenUpdatePrice}
+               UPDATE_TOKEN_PRICE={UPDATE_TOKEN_PRICE}
+
+            />
+          )
+        }
+
+        {
+           openUpdateAddress && (
+            <UpdateAddress
+              details={details}
+              currency={currency}
+              setOpenUpdateAddress={setOpenUpdateAddress}
+              UPDATE_TOKEN={UPDATE_TOKEN}
+              ERC20={ERC20}
+              setLoader={setLoader}
+            />
+           )
+        }
+
+        {
+          loader && (
+            <Loader/>
+          )
+        }
+
+
+      <Header
+         account={account}
+         setLoader={setLoader}
+         CONNECT_WALLET={CONNECT_WALLET}
+         details={details}
+         setAccount={setAccount}
+         setOwnerModel={setOwnerModel}
+         shortAddress={shortAddress}
+         currency={currency}
+         ownerModel={ownerModel}
+
+      />
+
+      <SideBar/>
+
+      <Hero
+       setBuyModel={setBuyModel}
+       account={account}
+       CONNECT_WALLET={CONNECT_WALLET}
+       setAccount={setAccount}
+       setLoader={setLoader}
+       details={details}
+       addtokenToMetaMask={addtokenToMetaMask}
+      />
+
+      <About/>
+      <Features/>
+      <Token/>
+      <TokenInfo details={details}/>
+      <Team/>
+      <Faq/>
+      <Contact/>
+      <Footer/>
+
+
       </div>
     </>
   );

@@ -171,7 +171,7 @@ export const CONNECT_WALLET = async () => {
   
     return account[0];
   }catch(error){
-    console.log(error);
+    console.log("error in CONNECT_WALLET");
   }
 
 }

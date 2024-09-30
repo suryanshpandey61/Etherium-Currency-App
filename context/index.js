@@ -74,7 +74,7 @@ import {
         }
 
         
-        const BUY_TOKEN = async (amount) => {
+        const BUY_TOKEN = async (amount) => { 
             try{
                 setLoader(true);
                 const address = await CHECK_WALLET_CONNECTED();
