@@ -15,6 +15,12 @@ const Header = ({
 
   const[isMetaMaskInstalled,setIsMetaMaskInstall] = useState(false);
 
+  const connectWallet = async () => {
+    setLoader(true);
+    const address = await CONNECT_WALLET();
+    setAccount(address);
+  }
+
   useEffect(()=> 
   {
     if(typeof window.ethereum !== "undefined"){
@@ -87,7 +93,7 @@ const Header = ({
                     <a className="scrollspy-btn" href="#contact">Contact</a>
                   </li>
                   <li >
-                    <a className="scrollspy-btn"
+                    <a className="scrollspy-btn" 
                     style={{cursor:"pointer",
 
                     }}
@@ -101,7 +107,7 @@ const Header = ({
             <div className="header__action ul_li">
               <div className="d-xl-none">
                 <a className="header__bar hamburger_menu">
-                  <div className="header_bar-icon">
+                  <div className="header__bar-icon">
                     <span/>
                     <span/>
                     <span/>
@@ -119,7 +125,7 @@ const Header = ({
                     
                   </a>
                 </div>) : (<div className="header__acount">
-                                <a onClick={()=> connectMetaMask()}>Connect Wallet</a>
+                                <a className="thm-btn" onClick ={()=> connectWallet(true)}>Connect  Wallet</a>
                           </div>)
               }
            </div>

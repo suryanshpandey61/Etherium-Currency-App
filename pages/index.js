@@ -42,7 +42,7 @@ const Index = () => {
     CHECK_ACCOUNT_BALANCE,
     setAccount,
     setLoader,
-    addtokenToMetaMask,
+    addTokenToMetaMask,
     TOKEN_ADDRESS,
     loader,
     account,
@@ -104,7 +104,7 @@ const Index = () => {
         }
 
         {
-          transferModel && (
+          !transferModel && (
             <TransferToken
               setTransferModel={setTransferModel}
               TRANSFER_TOKEN={TRANSFER_TOKEN}
@@ -192,13 +192,13 @@ const Index = () => {
        setAccount={setAccount}
        setLoader={setLoader}
        details={details}
-       addtokenToMetaMask={addtokenToMetaMask}
+       addTokenToMetaMask={addTokenToMetaMask}
       />
 
       <About/>
       <Features/>
       <Token/>
-      <TokenInfo details={details}/>
+      <TokenInfo details={details} currency={currency}/>
       <Team/>
       <Faq/>
       <Contact/>

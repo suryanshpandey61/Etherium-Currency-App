@@ -293,42 +293,42 @@ export const CHECK_ACCOUNT_BALANCE = async (ADDRESS) => {
 }
 
 
-export const addtokenToMetaMask = async () => {
-  if(window.ethereum){
+export const addTokenToMetaMask = async () => {
+  if (window.ethereum) {
+    const tokenDetails = await ERC20(TOKEN_ADDRESS);
     const tokenDecimals = tokenDetails?.decimals;
     const tokenAddress = TOKEN_ADDRESS;
     const tokenSymbol = tokenDetails?.symbol;
     const tokenImage = "https://www.daulathussain.com/wp-content/uploads/2024/05/theblockchaincoders.jpg";
 
-    try{
-      const wasAdded = await window.ethereum({
+    try {
+      const wasAdded = await window.ethereum.request({
         method: "wallet_watchAsset",
-        params:{
-          type:"ERC20",
-          option:{
-            address:tokenAddress,
-            symbol:tokenSymbol,
-            decimals:tokenDecimals,
-            image:tokenImage,
+        params: {
+          type: "ERC20",
+          options: {  
+            address: tokenAddress,
+            symbol: tokenSymbol,
+            decimals: tokenDecimals,
+            image: tokenImage,
           }
         }
       });
 
-      if(wasAdded){
+      if (wasAdded) {
         return "Token added successfully";
-      }
-      else{
+      } else {
         return "Token not added";
       }
-    }catch(error){
-      return "Failed to add";
+    } catch (error) {
+      console.error(error);
+      return "Failed to add the token to MetaMask";
     }
 
-
-
-  }else{
-    return "MetaMask is not install";
+  } else {
+    return "MetaMask is not installed";
   }
 }
+
 
 
