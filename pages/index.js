@@ -71,7 +71,7 @@ const Index = () => {
 
   return (
     <>
-      <div className="body-wrap">
+      <div className="body_wrap">
 
 
         {ownerModel && (

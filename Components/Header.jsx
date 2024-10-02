@@ -71,7 +71,7 @@ const Header = ({
             
 
             </div>
-            <div className="main-menu__wrap ul_li navbar navbar-expand-xl">
+            <div className="main-menu_wrap ul_li navbar navbar-expand-xl">
               <nav className="main-menu collapse navbar-collapse">
                 <ul>
                   <li className="active has-mega-menu">
@@ -80,9 +80,7 @@ const Header = ({
                   <li>
                     <a className="scrollspy-btn" href="#about">About</a>
                   </li>
-                  <li>
-                    <a className="scrollspy-btn" href="#roadmap">RoadMap</a>
-                  </li>
+                 
                   <li>
                     <a className="scrollspy-btn" href="#team">Team</a>
                   </li>

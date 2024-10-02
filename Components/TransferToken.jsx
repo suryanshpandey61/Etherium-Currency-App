@@ -44,12 +44,13 @@ const TransferToken = (
             
             <div>
             <div className="row">
-              <div className="col-lg-12 mb-20">
+              {/* 1st input field  */}
+              <div className="col-lg-12">
                 {
                   tokenDetails?.name ? (<input type="text" value={`Name ${tokenDetails?.name} Balance ${tokenDetails?.balance} ${tokenDetails?.symbol}`} />) : 
                   (<input
                     type="text"
-                    placeholder="Token address"
+                    placeholder="_tokenAddress"
                     onChange={(e)=>{
                       setToken({
                         ...tokenDetails,
@@ -60,12 +61,14 @@ const TransferToken = (
                   />)
                 }
               </div>
+
+              {/* 2nd input field  */}
               <div className="col-lg-12 mb-20">
               <input
                     type="text"
                     placeholder="_sendTO"
                     onChange={(e)=> setToken({
-                      ...tokenDetails,
+                      ...token,
                       _sendTo:e.target.value,
                     })
                       
@@ -74,12 +77,17 @@ const TransferToken = (
               </div>
 
               
-
+              {/* 3rd input feild  */}
               <div className="col-lg-12 mb-20">
               <input
                     type="text"
                     placeholder="_amount"
-                    onChange={(e)=>setToken(e.target.value)
+                    onChange={(e)=>{
+                      const value=e.target.value;
+                      setToken({
+                        ...token,
+                        _amount:value,
+                      })}
                       
                     }
                   />

@@ -256,33 +256,35 @@ import {
 
         
         const TRANSFER_TOKEN = async (transfer) => {
-            try{
+            try {
                 setLoader(true);
-                const {_tokenAddress,_amount,_sendTo} = transfer;
+                const { _tokenAddress, _sendTo, _amount } = transfer;
                 const address = await CHECK_WALLET_CONNECTED();
-
-                if(address){
-
-                    const contract = await ERC20_CONTRACT(_tokenAddress);
-                    const payAmount = ethers.utils.parseUnits(_amount.toString(),"Ether");
-
-                    const transaction = await contract.transfer(_sendTo,payAmount,{
-                        
-                        //8 then six zero hai
-                        gasLimit: ethers.utils.hexlify(8000000)
-                    });
         
-                    await transaction.wait();
-                    notifySuccess("Transfer  token  successfully");
-                    window.location.reload();
-                       
+                if (address) {
+                    const contract = await ERC20_CONTRACT(_tokenAddress);
+        
+                    // Validate _amount that it should be greater than 0
+                    if (_amount && !isNaN(_amount) && Number(_amount) > 0) {
+                        const payAmount = ethers.utils.parseUnits(Number(_amount).toString(), "ether");
+        
+                        const transaction = await contract.transfer(_sendTo, payAmount, {
+                            gasLimit: ethers.utils.hexlify(8000000),
+                        });
+        
+                        await transaction.wait();
+                        notifySuccess("Transfer token successfully");
+                        window.location.reload();
+                    } else {
+                        notifyError("Invalid amount. Please enter a valid number greater than zero.");
+                    }
                 }
-            }
-            catch(error){
+            } catch (error) {
                 console.log(error);
-                notifyError("Error while tranfer the token");
+                notifyError("Error while transferring the token");
             }
-        }
+        };
+        
 
         return <TOKEN_ICO_CONTEXT.Provider
                  value={{

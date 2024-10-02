@@ -28,7 +28,7 @@ const TransferCurrency = (
           console.log("kindly pass the token address")
         }
         else{
-          setTokenDetails(balance);
+          setReciever(balance);
           console.log(balance);
         }
         setLoader(false);
@@ -42,36 +42,47 @@ const TransferCurrency = (
     <section className="new-margin ico-contact pos-rel">
         <div className="container mb-20">
           <div className="ico-contact__wrap">
-            <h2 className="title">Transfer ETH {currency}<strong onClick={()=>setTransferCurrency(false)}>X</strong></h2>
+            <h2 className="title">Transfer  {currency}<strong onClick={()=>setTransferCurrency(false)}>X</strong></h2>
             
             <div>
             <div className="row">
               
               <div className="col-lg-12 ">
+                {
+                  reciever ? (
+                  <input
+                       type="text"
+                       value={`Account Balance ${reciever.slice(0,8)} ${currency}`}
+                  />) : (
+                    <input
+                      type="text"
+                      placeholder="_reciver"
+                      onChange={(e)=>(setTransfer({
+                        ...transfer,
+                        _reciever:e.target.value
+                      }),
+                    setAddress(e.target.value)
+                    )}
+                    />
+                  )
+                }
+                </div>
+              <div className="col-lg-12">
               <input
                     type="text"
-                    placeholder="_reciver"
-                    onChange={(e)=> (setTransfer({
+                    placeholder="_amount"
+                    onChange={(e)=> (
+                      setTransfer({
                       ...transfer,
-                      _reciever:e.target.value,
-                    }),
-                    setAddress(e.target.value)
+                      _amount:e.target.value,
+                    })
+                    
                       
                     )}
                   />
               </div>
 
-              <div className="col-lg-12 mb-20">
-              <input
-                    type="text"
-                    placeholder="_sendTo"
-                    onChange={(e)=> (setTransfer({
-                      ...transfer,
-                      _amount:e.target.value,
-                    })
-                  )}
-                  />
-              </div>
+           
 
               <p>
                 <strong>Balance:</strong>{details?.maticBal} {currency}
