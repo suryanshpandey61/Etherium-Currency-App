@@ -1,9 +1,10 @@
 import React ,{useState,useEffect}from "react";
 
-const TransferToken = (setTransferModel,
+const TransferToken = (
+  {setTransferModel,
   TRANSFER_TOKEN,
   ERC20,
-  setLoader) => {
+  setLoader}) => {
  
   const [token,setToken] = useState({
     _sendTo:"",
@@ -38,7 +39,7 @@ const TransferToken = (setTransferModel,
   return(
     <section className="new-margin ico-contact pos-rel">
         <div className="container mb-20">
-          <div className="ico-container__wrap">
+          <div className="ico-contact__wrap">
             <h2 className="title">Transfer Token<strong onClick={()=>setTransferModel(false)}>X</strong></h2>
             
             <div>
@@ -77,24 +78,27 @@ const TransferToken = (setTransferModel,
               <div className="col-lg-12 mb-20">
               <input
                     type="text"
-                    placeholder="_sendTO"
+                    placeholder="_amount"
                     onChange={(e)=>setToken(e.target.value)
                       
                     }
                   />
               </div>
 
-              <div className="ico-contract__btn text-center mt-10">
+              <div className="ico-contact__btn text-center mt-10">
                 <button className="thm-btn" onClick={()=> TRANSFER_TOKEN(token)}>
                   Tranfer Token
                 </button>
               </div>
             </div>
           </div>
+
+           
           </div>
 
           
         </div>
+      
     </section>
   )
 };

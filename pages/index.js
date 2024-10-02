@@ -104,7 +104,7 @@ const Index = () => {
         }
 
         {
-          !transferModel && (
+          transferModel && (
             <TransferToken
               setTransferModel={setTransferModel}
               TRANSFER_TOKEN={TRANSFER_TOKEN}
@@ -128,7 +128,7 @@ const Index = () => {
         }
 
         {
-          openDonate && (
+         openDonate && (
             <Donate
               details={details}
               currency={currency}
