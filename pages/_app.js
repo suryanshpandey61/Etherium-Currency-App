@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import toast ,{Toaster} from "react-hot-toast";
 import { TOKEN_ICO_Provider } from "../context";
 
+
 export default function App({ Component, pageProps }) {
   return (
     <>

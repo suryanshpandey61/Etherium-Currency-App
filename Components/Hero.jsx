@@ -61,7 +61,7 @@ const Hero = ({
                  Participate In the <span>Ongoing ICO Token</span> Sale
              </h1>
 
-             <div className="btns">
+             <div className="btns connect-wlt-btn">
                  {
                   account ? (
                     <a className="thm-btn" onClick ={()=> setBuyModel(true)}>Purchase Token</a>

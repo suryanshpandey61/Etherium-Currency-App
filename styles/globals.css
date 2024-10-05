@@ -44,3 +44,9 @@
   }
 }
 /* END LOADER */
+.connect-wlt-btn{
+  cursor: pointer;
+}
+.disconnect-btn{
+  margin-left: 5px;
+}

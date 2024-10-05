@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 
 
+
 const Header = ({ 
   account,
   setLoader,
@@ -21,6 +22,18 @@ const Header = ({
     setAccount(address);
   }
 
+  const disconnectWallet = async () => {
+    setAccount(null);
+    // Open MetaMask for user to select another account
+    if (typeof window.ethereum !== "undefined") {
+      try {
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+      } catch (error) {
+        console.error("Error opening MetaMask:", error);
+      }
+    }
+  }
+
   useEffect(()=> 
   {
     if(typeof window.ethereum !== "undefined"){
@@ -35,9 +48,13 @@ const Header = ({
     }
   },[])
 
+  
+
   const handleAccountsChanged = (account) => {
     setAccount(account[0]);
   }
+
+  
 
   const connectMetaMask = async () => {
     if(typeof window.ethereum !== "undefined"){
@@ -114,18 +131,21 @@ const Header = ({
                 </a>
               </div>
               {
-                account ?( <div className="header__account">
-                  <a onClick={()=> navigator.clipboard.writeText(details?.address)}>
+                account ?( <div className="header__account connect-wlt-btn">
+                  <a onClick={()=> navigator.clipboard.writeText(details?.address)}> 
                     
                        {shortAddress(details?.address)} : {" "} 
                        {details?.maticBal?.slice(0,6)}
                        {currency}
                     
                   </a>
-                </div>) : (<div className="header__acount">
-                                <a className="thm-btn" onClick ={()=> connectWallet(true)}>Connect  Wallet</a>
+                </div>) : (<div className="header__acount connect-wlt-btn">
+                                <a className="thm-btn" onClick ={()=> connectWallet()}>Connect  Wallet</a>
                           </div>)
               }
+              {/* <div className="header__acount connect-wlt-btn disconnect-btn">
+                                <a className="thm-btn"  onClick ={()=>disconnectWallet}>Disconnect  Wallet</a>
+              </div> */}
            </div>
             
           </div>
