@@ -143,9 +143,9 @@ const Header = ({
                                 <a className="thm-btn" onClick ={()=> connectWallet()}>Connect  Wallet</a>
                           </div>)
               }
-              {/* <div className="header__acount connect-wlt-btn disconnect-btn">
+              <div className="header__acount connect-wlt-btn disconnect-btn">
                                 <a className="thm-btn"  onClick ={()=>disconnectWallet}>Disconnect  Wallet</a>
-              </div> */}
+              </div>
            </div>
             
           </div>
