@@ -38,6 +38,7 @@ const Index = () => {
     TOKEN_WITHDRAW,
     TRANSFER_TOKEN,
     CONNECT_WALLET,
+    DISCONNECT_WALLET,
     ERC20,
     CHECK_ACCOUNT_BALANCE,
     setAccount,
@@ -171,9 +172,11 @@ const Index = () => {
 
 
       <Header
+        TOKEN_ICO={TOKEN_ICO}
          account={account}
          setLoader={setLoader}
          CONNECT_WALLET={CONNECT_WALLET}
+         DISCONNECT_WALLET={DISCONNECT_WALLET}
          details={details}
          setAccount={setAccount}
          setOwnerModel={setOwnerModel}

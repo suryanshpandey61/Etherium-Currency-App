@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import {
     CHECK_WALLET_CONNECTED,
     CONNECT_WALLET,
+    DISCONNECT_WALLET,
     changeNetwork,
     handleNetworkSwitch,
     TOKEN_ICO_CONTRACT,
@@ -298,6 +299,7 @@ import {
                     TOKEN_WITHDRAW,
                     TRANSFER_TOKEN,
                     CONNECT_WALLET,
+                    DISCONNECT_WALLET,
                     ERC20,
                     CHECK_ACCOUNT_BALANCE,
                     setAccount,

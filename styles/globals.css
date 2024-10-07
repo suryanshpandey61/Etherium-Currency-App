@@ -50,3 +50,18 @@
 .disconnect-btn{
   margin-left: 5px;
 }
+.header__account {
+  position: relative; /* Ensure dropdown is positioned correctly */
+}
+
+.dropdown-menu {
+  position: absolute; /* Position it relative to the account container */
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  z-index: 10;
+  display: flex;
+  transition-duration: 500ms;
+  flex-direction: column;
+}
+

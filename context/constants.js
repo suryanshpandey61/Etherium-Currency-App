@@ -176,6 +176,13 @@ export const CONNECT_WALLET = async () => {
 
 }
 
+export const DISCONNECT_WALLET = (setAccount) => {
+  // Clear the account state
+  setAccount(null); // or set it to an empty string if that's how you handle it
+  console.log("Disconnected from wallet");
+};
+
+
 
 
 

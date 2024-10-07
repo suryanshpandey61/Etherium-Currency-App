@@ -66,7 +66,7 @@ const Hero = ({
                   account ? (
                     <a className="thm-btn" onClick ={()=> setBuyModel(true)}>Purchase Token</a>
                   ) : (
-                    <a className="thm-btn" onClick ={()=> connectWallet(true)}>Connect Wallet </a>
+                    <a className="thm-btn" onClick ={()=> connectWallet()}>Connect Wallet </a>
                   )
                  }
                  
